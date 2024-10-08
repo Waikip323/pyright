@@ -40,14 +40,7 @@ extends:
                 submodules: true
                 fetchTags: true
                 persistCredentials: True
-              - task: NodeTool@0
-                displayName: Use Node 18.x
-                inputs:
-                  versionSpec: 18.x
-              - task: CmdLine@2
-                displayName: npm install
-                inputs:
-                  script: npm run install:all
+              - template: /build/templates/node.yml@self
               - task: CmdLine@2
                 displayName: Package VSIX
                 inputs:
