@@ -11,6 +11,18 @@ steps:
     inputs:
       workingFile: '$(Build.SourcesDirectory)/.npmrc'
 
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: '$(Build.SourcesDirectory)/packages/pyright/.npmrc'
+
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: '$(Build.SourcesDirectory)/packages/pyright-internal/.npmrc'
+
+  - task: npmAuthenticate@0
+    inputs:
+      workingFile: '$(Build.SourcesDirectory)/packages/vscode-pyright/.npmrc'
+
   - ${{ if eq(parameters.skipInstall, false)}}:
       task: CmdLine@2
       displayName: npm install
